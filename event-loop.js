@@ -1,52 +1,59 @@
-process.nextTick(() => {
+setTimeout(() => {
   console.log(0);
 });
 
-setImmediate(() => {
-  console.log(1);
-  setTimeout(() => {
-    console.log(2);
-  });
-});
-
-setTimeout(() => {
-  console.log(3);
-  process.nextTick(() => {
-    console.log(4);
-  });
-  new Promise((resolve, reject) => {
-    resolve(console.log(5));
-  }).then(() => {
-    console.log(6);
-    setTimeout(() => console.log(7));
-  });
-}, 0);
-
-console.log(8);
-
-new Promise((resolve, reject) => {
-  resolve(console.log(9));
-}).then(() => {
-  process.nextTick(() => {
-    console.log(10);
-  });
-  console.log(11);
-  setTimeout(() => console.log(12));
-});
-
-setTimeout(() => {
-  console.log(13);
-}, 0);
-
-setImmediate(() => {
-  console.log(14);
-  process.nextTick(() => {
-    console.log(15);
-  });
-});
-
-console.log(16);
+console.log(1);
 
 process.nextTick(() => {
+  console.log(2);
+});
+
+setImmediate(() => {
+  console.log(3);
+  setTimeout(() => {
+    console.log(4);
+  });
+});
+
+setTimeout(() => {
+  console.log(5);
+  process.nextTick(() => {
+    console.log(6);
+  });
+  new Promise((resolve, reject) => {
+    resolve(console.log(7));
+  }).then(() => {
+    console.log(8);
+    setTimeout(() => console.log(9));
+  });
+}, 0);
+
+console.log(10);
+
+new Promise((resolve, reject) => {
+  resolve(console.log(11));
+}).then(() => {
+  process.nextTick(() => {
+    console.log(12);
+  });
+  console.log(13);
+  setImmediate(() => console.log(14));
+  setTimeout(() => console.log(15));
+});
+
+setTimeout(() => {
+  console.log(16);
+}, 0);
+
+setImmediate(() => {
   console.log(17);
+  process.nextTick(() => {
+    console.log(18);
+  });
+});
+
+console.log(19);
+
+process.nextTick(() => {
+  console.log(20);
 });
